@@ -1080,6 +1080,21 @@ h3 {
 }
 
 /* ============================================
+   FAQ SECTION
+   ============================================ */
+.faq-section {
+    padding: var(--section-padding);
+    background: var(--primary-soft);
+    border-top: 1px solid var(--border-light);
+}
+
+.faq-section .accordion-body p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 .footer {

@@ -82,13 +82,16 @@ function initAccordion() {
             const collapse = item.querySelector('.accordion-collapse');
             const isActive = item.classList.contains('active');
 
-            // Collapse all other active items
-            document.querySelectorAll('.accordion-item.active').forEach(activeItem => {
-                if (activeItem !== item) {
-                    activeItem.classList.remove('active');
-                    activeItem.querySelector('.accordion-collapse').style.maxHeight = null;
-                }
-            });
+            // Collapse all other active items in the same container
+            const container = item.closest('.accordion-container');
+            if (container) {
+                container.querySelectorAll('.accordion-item.active').forEach(activeItem => {
+                    if (activeItem !== item) {
+                        activeItem.classList.remove('active');
+                        activeItem.querySelector('.accordion-collapse').style.maxHeight = null;
+                    }
+                });
+            }
 
             // Toggle current item
             if (isActive) {
