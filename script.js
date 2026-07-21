@@ -5,7 +5,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     initModal();
     initSmoothScroll();
-    initAccordion();
 });
 
 /* ============================================
@@ -16,6 +15,8 @@ function initModal() {
     const previewBtn = document.getElementById('previewBtn');
     const closeModal = document.getElementById('closeModal');
     const modalOverlay = modal.querySelector('.modal-overlay');
+
+    if (!modal || !previewBtn || !closeModal || !modalOverlay) return;
 
     // Open modal
     previewBtn.addEventListener('click', () => {
@@ -65,41 +66,6 @@ function initSmoothScroll() {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
-            }
-        });
-    });
-}
-
-/* ============================================
-   ACCORDION FUNCTIONALITY
-   ============================================ */
-function initAccordion() {
-    const headers = document.querySelectorAll('.accordion-header');
-
-    headers.forEach(header => {
-        header.addEventListener('click', function () {
-            const item = this.parentElement;
-            const collapse = item.querySelector('.accordion-collapse');
-            const isActive = item.classList.contains('active');
-
-            // Collapse all other active items in the same container
-            const container = item.closest('.accordion-container');
-            if (container) {
-                container.querySelectorAll('.accordion-item.active').forEach(activeItem => {
-                    if (activeItem !== item) {
-                        activeItem.classList.remove('active');
-                        activeItem.querySelector('.accordion-collapse').style.maxHeight = null;
-                    }
-                });
-            }
-
-            // Toggle current item
-            if (isActive) {
-                item.classList.remove('active');
-                collapse.style.maxHeight = null;
-            } else {
-                item.classList.add('active');
-                collapse.style.maxHeight = collapse.scrollHeight + "px";
             }
         });
     });

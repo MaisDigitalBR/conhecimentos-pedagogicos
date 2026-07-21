@@ -653,7 +653,7 @@ h3 {
     padding: 20px 24px;
     background: none;
     border: none;
-    cursor: pointer;
+    cursor: default;
     text-align: left;
     outline: none;
     font-family: var(--font-body);
@@ -671,14 +671,14 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(37, 99, 235, 0.06);
+    background: rgba(37, 99, 235, 0.08);
     border-radius: 12px;
     color: var(--accent-blue);
     font-size: 1.25rem;
     transition: all var(--transition-fast);
 }
 
-.accordion-item.active .accordion-icon {
+.accordion-item .accordion-icon {
     background: var(--gradient-blue);
     color: white;
 }
@@ -721,30 +721,17 @@ h3 {
 }
 
 .accordion-chevron {
-    color: var(--text-muted);
-    font-size: 1rem;
-    transition: transform var(--transition-medium);
-}
-
-.accordion-item.active .accordion-chevron {
-    transform: rotate(180deg);
-    color: var(--accent-blue);
+    display: none;
 }
 
 .accordion-collapse {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height var(--transition-medium);
+    max-height: none;
+    overflow: visible;
 }
 
 .accordion-body {
-    padding: 0 24px 24px 88px; /* Alignment offsets the icon width + gap */
-    border-top: 1px solid transparent;
-}
-
-.accordion-item.active .accordion-body {
-    border-top-color: var(--border-light);
-    padding-top: 20px;
+    padding: 20px 24px 24px 88px; /* Alignment offsets the icon width + gap */
+    border-top: 1px solid var(--border-light);
 }
 
 /* Topic list inside accordion body */
@@ -775,7 +762,7 @@ h3 {
 /* Responsiveness for accordion */
 @media (max-width: 768px) {
     .accordion-body {
-        padding: 0 20px 20px 20px;
+        padding: 16px 20px 20px 20px;
     }
     .topic-list {
         grid-template-columns: 1fr;
